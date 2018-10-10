@@ -3375,7 +3375,7 @@ def shutdown(loop: BaseEventLoop) -> None:
     """Cancel all pending tasks on `loop`, wait for them, and close the loop."""
     try:
         # This part is borrowed from asyncio/runners.py in Python 3.7b2.
-        to_cancel = [task for task in asyncio.Task.all_tasks(loop) if not task.done()]
+        to_cancel = [task for task in asyncio.all_tasks(loop) if not task.done()]
         if not to_cancel:
             return
 
